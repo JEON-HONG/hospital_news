@@ -591,6 +591,60 @@
       transition: all .12s;
     }
     .rec-rss-fail a:hover { background: var(--blue); color: #fff; }
+
+    /* ── 모바일 반응형 ──────────────────────────────────────────── */
+    @media (max-width: 640px) {
+
+      /* 헤더 */
+      .header-inner { height: 52px; padding: 0 14px; }
+      .hdivider, .portal-title, .date-chip { display: none; }
+      .logo-img { height: 30px; }
+      .header-left { gap: 8px; }
+      .recommend-btn, .refresh-btn { padding: 6px 10px; font-size: 12px; gap: 3px; }
+
+      /* 검색바 */
+      .searchbar { padding: 8px 0; }
+      .searchbar-inner { flex-direction: column; padding: 0 12px; gap: 7px; }
+      .source-select { width: 100%; min-width: unset; }
+      .search-btn { width: 100%; justify-content: center; padding: 10px; }
+
+      /* 탭 — 가로 스크롤 */
+      .tabs-inner {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 0 12px;
+      }
+      .tabs-inner::-webkit-scrollbar { display: none; }
+      .tab { padding: 11px 14px; font-size: 12px; }
+
+      /* 메인 */
+      .main { padding: 12px; }
+      .status-row { margin-bottom: 10px; }
+
+      /* 추천 뉴스 헤더 */
+      .rec-header { flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+      .rec-header-title { font-size: 15px; }
+      .rec-note { display: none; }
+      .rec-header-date { font-size: 11px; }
+
+      /* 뉴스 카드 */
+      .card { padding: 13px; }
+      .card-title { font-size: 13px; }
+
+      /* 추천 기사 */
+      .rec-article { padding: 11px 14px; gap: 9px; }
+      .rec-title { font-size: 13px; }
+      .rec-sec-head { padding: 10px 14px; }
+
+      /* 검색 결과 */
+      .result-item { padding: 11px 14px; }
+      .res-title { font-size: 13px; }
+      .src-head { padding: 9px 14px; }
+
+      /* 모드바 */
+      .mode-bar { font-size: 12px; flex-wrap: wrap; gap: 6px; }
+    }
   </style>
 </head>
 <body>

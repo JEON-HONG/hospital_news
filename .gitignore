@@ -1,0 +1,14 @@
+# API 키가 담긴 로컬 전용 파일 (GitHub에 올리지 않음)
+run_local.bat
+start.bat
+
+# QR 이미지 (필요시 직접 생성)
+hospital_news_qr.png
+
+# Python 캐시
+__pycache__/
+*.pyc
+
+# 시스템 파일
+.DS_Store
+Thumbs.db

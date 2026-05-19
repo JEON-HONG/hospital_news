@@ -1085,7 +1085,9 @@ async function doSearch() {
   const sections = document.getElementById('searchSections');
   sections.innerHTML = settled.map((r, i) => {
     const src   = SOURCES[i];
-    const items = r.status === 'fulfilled' ? r.value.items : [];
+    const items = r.status === 'fulfilled'
+      ? r.value.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
+      : [];
     totalFound += items.length;
 
     const rows = items.length

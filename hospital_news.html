@@ -931,7 +931,6 @@ async function fetchRSS(url) {
 // ── Load All Feeds ────────────────────────────────────────────────────────
 async function loadAllFeeds() {
   showSpinner('뉴스를 가져오는 중입니다...');
-  setRefreshSpin(true);
   allArticles = [];
   recArticles = {};
 
@@ -966,7 +965,6 @@ async function loadAllFeeds() {
     allArticles.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
     updateCounts();
     hideSpinner();
-    setRefreshSpin(false);
     showView('recommend');
     return;
 
@@ -998,7 +996,6 @@ async function loadAllFeeds() {
   allArticles.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
   updateCounts();
   hideSpinner();
-  setRefreshSpin(false);
   showView('recommend');
 }
 
@@ -1285,7 +1282,7 @@ function showSpinner(msg) {
   document.getElementById('statusTxt').textContent = '';
 }
 function hideSpinner() { document.getElementById('spinnerWrap').classList.remove('on'); }
-function setRefreshSpin(on) { document.getElementById('refreshBtn').classList.toggle('spinning', on); }
+
 
 function fmtDate(d) {
   if (!d) return '';

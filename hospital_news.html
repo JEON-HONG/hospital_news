@@ -718,6 +718,10 @@
       .rec-header-title { font-size: 15px; }
       .rec-note { display: none; }
       .rec-header-date { font-size: 11px; }
+      /* 우리병원 뉴스 헤더 — 최신 뉴스와 동일 스타일 */
+      .hosp-header { flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+      .hosp-header-title { font-size: 15px; }
+      .hosp-header-date { font-size: 11px; }
 
       /* 뉴스 카드 */
       .card { padding: 13px; }
@@ -854,7 +858,6 @@
       <span style="font-size:22px">🏥</span>
       <span class="hosp-header-title">우리병원 뉴스</span>
       <span class="hosp-header-date" id="hospDate"></span>
-      <span class="hosp-note">삼성창원병원 · 네이버뉴스 기준 최대 20건</span>
     </div>
     <div id="hospList"></div>
     <div class="empty-wrap" id="emptyHosp">
@@ -959,7 +962,9 @@ async function loadAllFeeds() {
     });
 
     if (data.updated) {
-      document.getElementById('recDate').textContent = `최종 수집: ${data.updated}`;
+      const dateLabel = `최종 수집: ${data.updated}`;
+      document.getElementById('recDate').textContent  = dateLabel;
+      document.getElementById('hospDate').textContent = dateLabel;
     }
 
     allArticles.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
@@ -1046,7 +1051,7 @@ function renderHospital() {
 
   empty.classList.remove('on');
   document.getElementById('statusTxt').innerHTML =
-    `삼성창원병원 관련 <strong>${filtered.length}건</strong> · 네이버뉴스 기준`;
+    `삼성창원병원 관련 <strong>${filtered.length}건</strong>`;
 
   const NAVER_URL = 'https://search.naver.com/search.naver?where=news&query=%EC%82%BC%EC%84%B1%EC%B0%BD%EC%9B%90%EB%B3%91%EC%9B%90&sort=1';
 

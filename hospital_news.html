@@ -662,6 +662,48 @@
     }
     .hosp-more-btn:hover { opacity: .88; }
 
+    /* ── 다른 병원 둘러보기 ───────────────────────────────────────── */
+    .explore-header { display:flex; align-items:center; gap:10px; margin-bottom:20px; }
+    .explore-header-title { font-size:18px; font-weight:700; color:var(--text); }
+    .explore-cats { display:grid; grid-template-columns:1fr; gap:12px; }
+    .explore-cat-card {
+      background:#fff; border-radius:10px; border:1px solid var(--gray-border);
+      box-shadow:var(--shadow); padding:20px 24px;
+      display:flex; align-items:center; gap:16px;
+      cursor:pointer; color:inherit; transition:box-shadow .15s, background .1s;
+    }
+    .explore-cat-card:hover { box-shadow:var(--shadow-lg); background:var(--blue-pale); }
+    .explore-cat-icon { font-size:28px; flex-shrink:0; }
+    .explore-cat-body { flex:1; }
+    .explore-cat-name { font-size:16px; font-weight:700; margin-bottom:4px; color:var(--text); }
+    .explore-cat-desc { font-size:12px; color:var(--gray-text); }
+    .explore-cat-cnt  { font-size:11px; font-weight:600; color:var(--blue); }
+    .explore-cat-arrow { color:var(--blue); font-size:22px; flex-shrink:0; }
+    .explore-back-btn {
+      display:inline-flex; align-items:center; gap:5px; margin-bottom:14px;
+      font-size:13px; font-weight:600; color:var(--blue);
+      background:none; border:none; cursor:pointer; padding:0;
+    }
+    .explore-sub-title { font-size:16px; font-weight:700; margin-bottom:16px; color:var(--text); }
+    .explore-hosp-list {
+      background:#fff; border-radius:10px;
+      box-shadow:var(--shadow); border:1px solid var(--gray-border); overflow:hidden;
+    }
+    .explore-hosp-item {
+      display:flex; align-items:center; gap:12px; padding:13px 18px;
+      border-bottom:1px solid var(--gray-border);
+      text-decoration:none; color:inherit; transition:background .1s;
+    }
+    .explore-hosp-item:last-child { border-bottom:none; }
+    .explore-hosp-item:hover { background:var(--blue-pale); }
+    .explore-hosp-region {
+      font-size:10px; font-weight:700; color:var(--blue);
+      background:var(--blue-pale); border:1px solid #C7D2F5;
+      padding:2px 7px; border-radius:10px; flex-shrink:0;
+    }
+    .explore-hosp-name { flex:1; font-size:14px; font-weight:500; }
+    .explore-hosp-arrow { color:var(--blue); font-size:16px; flex-shrink:0; }
+
     /* ── 모바일 반응형 ──────────────────────────────────────────── */
     @media (max-width: 640px) {
 
@@ -727,6 +769,11 @@
       .hosp-header { flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
       .hosp-header-title { font-size: 15px; }
       .hosp-header-date { font-size: 11px; }
+      /* 다른 병원 둘러보기 헤더 */
+      .explore-header { flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+      .explore-header-title { font-size: 15px; }
+      .explore-cat-name { font-size: 14px; }
+      .explore-cat-icon { font-size: 22px; }
 
       /* 뉴스 카드 */
       .card { padding: 13px; }
@@ -770,7 +817,7 @@
       <button class="hospital-btn" id="hospitalBtn" onclick="toggleHospitalMode()">
         🏥 우리병원 뉴스
       </button>
-      <button class="explore-btn" id="exploreBtn">
+      <button class="explore-btn" id="exploreBtn" onclick="showView('explore')">
         🏘 다른 병원 둘러보기
       </button>
     </div>
@@ -878,6 +925,16 @@
       <span class="empty-icon">🔎</span>
       <span class="empty-msg">검색 결과가 없습니다. 다른 키워드를 입력해보세요.</span>
     </div>
+  </div>
+
+  <!-- ⑤ 다른 병원 둘러보기 모드 -->
+  <div id="exploreMode" style="display:none">
+    <div class="explore-header">
+      <span style="font-size:22px">🏘</span>
+      <span class="explore-header-title">다른 병원 둘러보기</span>
+    </div>
+    <div id="exploreCats"></div>
+    <div id="exploreList" style="display:none"></div>
   </div>
 
 </main>
@@ -1016,22 +1073,25 @@ function showView(mode) {
   document.getElementById('feedMode').style.display      = mode === 'feed'      ? 'block' : 'none';
   document.getElementById('hospitalMode').style.display  = mode === 'hospital'  ? 'block' : 'none';
   document.getElementById('searchMode').style.display    = mode === 'search'    ? 'block' : 'none';
+  document.getElementById('exploreMode').style.display   = mode === 'explore'   ? 'block' : 'none';
 
-  // 검색바·탭 표시 여부 (우리병원 뉴스에서는 숨김)
-  const hospMode = (mode === 'hospital');
-  document.getElementById('searchbar').style.display     = hospMode ? 'none' : '';
-  document.getElementById('tabsRow').style.display       = hospMode ? 'none' : '';
+  // 검색바·탭 표시 여부 (우리병원 뉴스·다른 병원 둘러보기에서는 숨김)
+  const hideUI = (mode === 'hospital' || mode === 'explore');
+  document.getElementById('searchbar').style.display     = hideUI ? 'none' : '';
+  document.getElementById('tabsRow').style.display       = hideUI ? 'none' : '';
   document.getElementById('tabsRow').style.opacity       = mode === 'search' ? '.4' : '';
   document.getElementById('tabsRow').style.pointerEvents = mode === 'search' ? 'none' : '';
-  document.getElementById('sourceFilter').style.display  = (mode === 'search' || hospMode) ? 'none' : '';
+  document.getElementById('sourceFilter').style.display  = (mode === 'search' || hideUI) ? 'none' : '';
 
   // 버튼 active 상태
   document.getElementById('recommendBtn').classList.toggle('active', mode === 'recommend');
   document.getElementById('hospitalBtn').classList.toggle('active', mode === 'hospital');
+  document.getElementById('exploreBtn').classList.toggle('active', mode === 'explore');
 
   if (mode === 'recommend') renderRecommend();
   if (mode === 'feed')      renderFeed();
   if (mode === 'hospital')  renderHospital();
+  if (mode === 'explore')   renderExploreCats();
 }
 
 // ── 우리병원 뉴스 ─────────────────────────────────────────────────────────
@@ -1314,6 +1374,137 @@ function h(s) {
   return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 function esc(s) { return String(s||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+// ── 다른 병원 둘러보기 데이터 ──────────────────────────────────────────────
+const EXPLORE_DATA = {
+  tertiary: {
+    label: '상급종합병원',
+    icon: '🏛',
+    desc: '보건복지부 지정 상급종합병원',
+    hospitals: [
+      { name: '서울대학교병원',            region: '서울', url: 'https://www.snuh.org' },
+      { name: '서울아산병원',              region: '서울', url: 'https://www.amc.seoul.kr' },
+      { name: '삼성서울병원',              region: '서울', url: 'https://www.samsunghospital.com' },
+      { name: '세브란스병원',              region: '서울', url: 'https://www.severance.or.kr' },
+      { name: '강남세브란스병원',           region: '서울', url: 'https://gs.severance.or.kr' },
+      { name: '서울성모병원',              region: '서울', url: 'https://www.cmcseoul.or.kr' },
+      { name: '고려대학교 안암병원',        region: '서울', url: 'https://www.kumc.or.kr' },
+      { name: '고려대학교 구로병원',        region: '서울', url: 'https://guro.kumc.or.kr' },
+      { name: '경희대학교병원',            region: '서울', url: 'https://www.khuh.or.kr' },
+      { name: '한양대학교병원',            region: '서울', url: 'https://www.hyumc.com' },
+      { name: '이화여자대학교 목동병원',    region: '서울', url: 'https://www.eumc.ac.kr' },
+      { name: '중앙대학교병원',            region: '서울', url: 'https://www.caumc.or.kr' },
+      { name: '건국대학교병원',            region: '서울', url: 'https://www.kuh.ac.kr' },
+      { name: '강북삼성병원',              region: '서울', url: 'https://www.kbsmc.co.kr' },
+      { name: '순천향대학교 서울병원',      region: '서울', url: 'https://seoul.schmc.ac.kr' },
+      { name: '분당서울대학교병원',         region: '경기', url: 'https://www.snubh.org' },
+      { name: '아주대학교병원',            region: '경기', url: 'https://www.ajoumc.or.kr' },
+      { name: '가톨릭대학교 성빈센트병원',  region: '경기', url: 'https://www.cmcvincent.or.kr' },
+      { name: '순천향대학교 부천병원',      region: '경기', url: 'https://bucheon.schmc.ac.kr' },
+      { name: '한림대학교 성심병원',        region: '경기', url: 'https://www.hallym.or.kr' },
+      { name: '가천대 길병원',             region: '인천', url: 'https://www.gilhospital.com' },
+      { name: '인하대학교병원',            region: '인천', url: 'https://www.inha.com' },
+      { name: '부산대학교병원',            region: '부산', url: 'https://www.pnuh.or.kr' },
+      { name: '고신대학교 복음병원',        region: '부산', url: 'https://www.kosinmed.or.kr' },
+      { name: '인제대학교 부산백병원',      region: '부산', url: 'https://www.paik.ac.kr/busan' },
+      { name: '동아대학교병원',            region: '부산', url: 'https://www.daumc.or.kr' },
+      { name: '울산대학교병원',            region: '울산', url: 'https://www.uuh.ulsan.kr' },
+      { name: '경북대학교병원',            region: '대구', url: 'https://www.knuh.or.kr' },
+      { name: '계명대학교 동산병원',        region: '대구', url: 'https://www.dsmc.or.kr' },
+      { name: '영남대학교병원',            region: '대구', url: 'https://www.yumc.ac.kr' },
+      { name: '충남대학교병원',            region: '대전', url: 'https://www.cnuh.or.kr' },
+      { name: '가톨릭대학교 대전성모병원',  region: '대전', url: 'https://www.cmcdaejeon.or.kr' },
+      { name: '전남대학교병원',            region: '광주', url: 'https://www.cnuh.com' },
+      { name: '조선대학교병원',            region: '광주', url: 'https://www.chosunhospital.co.kr' },
+      { name: '전북대학교병원',            region: '전북', url: 'https://www.jbuh.or.kr' },
+      { name: '원광대학교병원',            region: '전북', url: 'https://www.wkuh.org' },
+      { name: '화순전남대학교병원',         region: '전남', url: 'https://www.cnuh.com/hwasun' },
+      { name: '충북대학교병원',            region: '충북', url: 'https://www.chungbuk.ac.kr' },
+      { name: '강원대학교병원',            region: '강원', url: 'https://www.kawmc.or.kr' },
+      { name: '한림대학교 춘천성심병원',    region: '강원', url: 'https://chuncheon.hallym.or.kr' },
+      { name: '동국대학교 경주병원',        region: '경북', url: 'https://www.dumc.or.kr' },
+      { name: '성균관대학교 삼성창원병원',  region: '경남', url: 'https://www.samsunghospital.com' },
+      { name: '경상국립대학교병원',         region: '경남', url: 'https://www.gnuh.co.kr' },
+      { name: '제주대학교병원',            region: '제주', url: 'https://www.jejunuh.co.kr' },
+    ]
+  },
+  emergency: {
+    label: '권역응급의료센터',
+    icon: '🚨',
+    desc: '보건복지부 지정 권역응급의료센터',
+    hospitals: [
+      { name: '서울대학교병원',            region: '서울', url: 'https://www.snuh.org' },
+      { name: '서울아산병원',              region: '서울', url: 'https://www.amc.seoul.kr' },
+      { name: '삼성서울병원',              region: '서울', url: 'https://www.samsunghospital.com' },
+      { name: '세브란스병원',              region: '서울', url: 'https://www.severance.or.kr' },
+      { name: '서울성모병원',              region: '서울', url: 'https://www.cmcseoul.or.kr' },
+      { name: '분당서울대학교병원',         region: '경기', url: 'https://www.snubh.org' },
+      { name: '아주대학교병원',            region: '경기', url: 'https://www.ajoumc.or.kr' },
+      { name: '고려대학교 안산병원',        region: '경기', url: 'https://ansan.kumc.or.kr' },
+      { name: '가천대 길병원',             region: '인천', url: 'https://www.gilhospital.com' },
+      { name: '강원대학교병원',            region: '강원', url: 'https://www.kawmc.or.kr' },
+      { name: '충북대학교병원',            region: '충북', url: 'https://www.chungbuk.ac.kr' },
+      { name: '충남대학교병원',            region: '대전', url: 'https://www.cnuh.or.kr' },
+      { name: '순천향대학교 천안병원',      region: '충남', url: 'https://cheonan.schmc.ac.kr' },
+      { name: '전북대학교병원',            region: '전북', url: 'https://www.jbuh.or.kr' },
+      { name: '전남대학교병원',            region: '광주', url: 'https://www.cnuh.com' },
+      { name: '화순전남대학교병원',         region: '전남', url: 'https://www.cnuh.com/hwasun' },
+      { name: '경북대학교병원',            region: '대구', url: 'https://www.knuh.or.kr' },
+      { name: '칠곡경북대학교병원',         region: '경북', url: 'https://www.knuch.or.kr' },
+      { name: '부산대학교병원',            region: '부산', url: 'https://www.pnuh.or.kr' },
+      { name: '동아대학교병원',            region: '부산', url: 'https://www.daumc.or.kr' },
+      { name: '울산대학교병원',            region: '울산', url: 'https://www.uuh.ulsan.kr' },
+      { name: '경상국립대학교병원',         region: '경남', url: 'https://www.gnuh.co.kr' },
+      { name: '제주대학교병원',            region: '제주', url: 'https://www.jejunuh.co.kr' },
+    ]
+  },
+  local: {
+    label: '지역 내 병원',
+    icon: '📍',
+    desc: '창원 지역 주요 병원',
+    hospitals: [
+      { name: '창원경상대학교병원', region: '창원', url: 'https://www.gnuh.co.kr' },
+      { name: '창원파티마병원',     region: '창원', url: 'https://www.fatima.or.kr' },
+      { name: '창원한마음병원',     region: '창원', url: 'https://www.cwhm.co.kr' },
+    ]
+  }
+};
+
+function renderExploreCats() {
+  document.getElementById('exploreList').style.display = 'none';
+  const div = document.getElementById('exploreCats');
+  div.style.display = '';
+  div.innerHTML = `<div class="explore-cats">
+    ${Object.entries(EXPLORE_DATA).map(([key, cat]) => `
+      <div class="explore-cat-card" onclick="renderExploreList('${key}')">
+        <span class="explore-cat-icon">${cat.icon}</span>
+        <div class="explore-cat-body">
+          <div class="explore-cat-name">${cat.label}</div>
+          <div class="explore-cat-desc">${cat.desc}</div>
+          <div class="explore-cat-cnt">${cat.hospitals.length}개 기관</div>
+        </div>
+        <span class="explore-cat-arrow">›</span>
+      </div>`).join('')}
+  </div>`;
+}
+
+function renderExploreList(catKey) {
+  document.getElementById('exploreCats').style.display = 'none';
+  const cat = EXPLORE_DATA[catKey];
+  const div = document.getElementById('exploreList');
+  div.style.display = '';
+  div.innerHTML = `
+    <button class="explore-back-btn" onclick="renderExploreCats()">‹ 목록으로</button>
+    <div class="explore-sub-title">${cat.icon} ${cat.label} <span style="font-size:13px;font-weight:400;color:var(--gray-text)">(${cat.hospitals.length}개)</span></div>
+    <div class="explore-hosp-list">
+      ${cat.hospitals.map(hosp => `
+        <a class="explore-hosp-item" href="${esc(hosp.url)}" target="_blank" rel="noopener">
+          <span class="explore-hosp-region">${hosp.region}</span>
+          <span class="explore-hosp-name">${hosp.name}</span>
+          <span class="explore-hosp-arrow">›</span>
+        </a>`).join('')}
+    </div>`;
+}
 function highlight(html, kw) {
   if (!kw) return html;
   const re = new RegExp('(' + kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');

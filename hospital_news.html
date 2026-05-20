@@ -1034,7 +1034,7 @@ function showView(mode) {
 
 // ── 우리병원 뉴스 ─────────────────────────────────────────────────────────
 function toggleHospitalMode() {
-  showView(viewMode === 'hospital' ? 'recommend' : 'hospital');
+  showView('hospital');
 }
 
 function renderHospital() {
@@ -1085,12 +1085,7 @@ function renderHospital() {
 
 // ── Recommend Mode ────────────────────────────────────────────────────────
 function toggleRecommendMode() {
-  if (viewMode === 'recommend') {
-    // 추천 → 피드로 전환
-    showView('feed');
-  } else {
-    showView('recommend');
-  }
+  showView('recommend');
 }
 
 function renderRecommend() {

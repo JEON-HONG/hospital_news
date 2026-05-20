@@ -672,25 +672,25 @@
       .hdivider { display: none; }
       .portal-title { display: block; font-size: 13px; }
       .date-chip { display: none; }
-      /* 버튼 3개를 두 번째 행에 가득 채움 */
+      /* 버튼 3개를 두 번째 행에 독립 둥근 버튼으로 배치 */
       .header-right {
         flex-basis: 100%;
         border-top: 1px solid var(--gray-border);
-        gap: 0;
-        padding: 0;
+        gap: 6px;
+        padding: 8px 12px;
       }
       .recommend-btn, .hospital-btn, .explore-btn {
         flex: 1;
         justify-content: center;
-        border-radius: 0;
-        padding: 9px 4px;
+        border-radius: 8px;
+        padding: 8px 4px;
         font-size: 11px;
         gap: 3px;
         box-shadow: none;
         transform: none !important;
       }
-      .recommend-btn { border-right: 1px solid rgba(255,255,255,.25); }
-      .hospital-btn  { border-right: 1px solid rgba(255,255,255,.25); }
+      .recommend-btn { border-right: none; }
+      .hospital-btn  { border-right: none; }
 
       /* 검색바 */
       .searchbar { padding: 8px 0; }
@@ -778,7 +778,7 @@
         </svg>
       </span>
       <input class="search-input" id="searchInput" type="text"
-        placeholder="키워드로 6개 언론사 전체 검색 (예: 간호간병통합서비스, 수가 인상, 전공의 수련...)"
+        placeholder="키워드로 6개 의료전문 언론사 검색 (예: 간호간병통합서비스, 수가 인상, 전공의 수련...)"
         onkeydown="if(event.key==='Enter')doSearch()">
       <button class="search-clear" id="searchClear" onclick="clearSearch()" title="검색 초기화">✕</button>
     </div>
@@ -1031,7 +1031,13 @@ function renderHospital() {
   const list  = document.getElementById('hospList');
   const empty = document.getElementById('emptyHosp');
 
-  if (!hospitalArticles.length) {
+  // 제목 또는 내용에 '삼성창원병원'이 포함된 기사만 표시
+  const filtered = hospitalArticles.filter(item =>
+    (item.title       && item.title.includes('삼성창원병원')) ||
+    (item.description && item.description.includes('삼성창원병원'))
+  );
+
+  if (!filtered.length) {
     list.innerHTML = '';
     empty.classList.add('on');
     document.getElementById('statusTxt').textContent = '우리병원 뉴스 데이터가 없습니다.';
@@ -1040,13 +1046,13 @@ function renderHospital() {
 
   empty.classList.remove('on');
   document.getElementById('statusTxt').innerHTML =
-    `삼성창원병원 관련 <strong>${hospitalArticles.length}건</strong> · 네이버뉴스 기준`;
+    `삼성창원병원 관련 <strong>${filtered.length}건</strong> · 네이버뉴스 기준`;
 
   const NAVER_URL = 'https://search.naver.com/search.naver?where=news&query=%EC%82%BC%EC%84%B1%EC%B0%BD%EC%9B%90%EB%B3%91%EC%9B%90&sort=1';
 
   list.innerHTML = `
     <div class="hosp-list">
-      ${hospitalArticles.map((item, idx) => `
+      ${filtered.map((item, idx) => `
         <a class="hosp-item" href="${esc(item.link)}" target="_blank" rel="noopener">
           <span class="hosp-num">${idx + 1}</span>
           <div class="hosp-body">

@@ -173,11 +173,16 @@ def main():
     hospital_items = search_naver("삼성창원병원", display=20)
     hospital_news = []
     for item in hospital_items:
+        title = clean(item.get("title", ""))
+        description = clean(item.get("description", ""))
+        # 제목 또는 내용에 '삼성창원병원'이 포함된 기사만 저장
+        if "삼성창원병원" not in title and "삼성창원병원" not in description:
+            continue
         link = item.get("originallink") or item.get("link", "")
         hospital_news.append({
-            "title":       clean(item.get("title", "")),
+            "title":       title,
             "link":        link,
-            "description": clean(item.get("description", "")),
+            "description": description,
             "pubDate":     item.get("pubDate", ""),
             "_outlet":     extract_outlet(item),
         })

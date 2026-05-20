@@ -678,6 +678,7 @@
     .explore-cat-name { font-size:16px; font-weight:700; margin-bottom:4px; color:var(--text); }
     .explore-cat-desc { font-size:12px; color:var(--gray-text); }
     .explore-cat-cnt  { font-size:11px; font-weight:600; color:var(--blue); }
+    .explore-cat-designated { font-size:10px; font-weight:400; color:var(--gray-text); margin-left:7px; }
     .explore-cat-arrow { color:var(--blue); font-size:22px; flex-shrink:0; }
     .explore-back-btn {
       display:inline-flex; align-items:center; gap:5px; margin-bottom:14px;
@@ -1381,6 +1382,7 @@ const EXPLORE_DATA = {
     label: '상급종합병원',
     icon: '🏛',
     desc: '보건복지부 지정 상급종합병원',
+    designated: '2024년 1월 지정 (4주기)',
     hospitals: [
       { name: '서울대학교병원',            region: '서울', url: 'https://www.snuh.org' },
       { name: '서울아산병원',              region: '서울', url: 'https://www.amc.seoul.kr' },
@@ -1432,6 +1434,7 @@ const EXPLORE_DATA = {
     label: '권역응급의료센터',
     icon: '🚨',
     desc: '보건복지부 지정 권역응급의료센터',
+    designated: '2021년 6월 지정',
     hospitals: [
       { name: '서울대학교병원',            region: '서울', url: 'https://www.snuh.org' },
       { name: '서울아산병원',              region: '서울', url: 'https://www.amc.seoul.kr' },
@@ -1479,7 +1482,7 @@ function renderExploreCats() {
       <div class="explore-cat-card" onclick="renderExploreList('${key}')">
         <span class="explore-cat-icon">${cat.icon}</span>
         <div class="explore-cat-body">
-          <div class="explore-cat-name">${cat.label}</div>
+          <div class="explore-cat-name">${cat.label}${cat.designated ? `<span class="explore-cat-designated">${cat.designated}</span>` : ''}</div>
           <div class="explore-cat-desc">${cat.desc}</div>
           <div class="explore-cat-cnt">${cat.hospitals.length}개 기관</div>
         </div>
@@ -1495,7 +1498,7 @@ function renderExploreList(catKey) {
   div.style.display = '';
   div.innerHTML = `
     <button class="explore-back-btn" onclick="renderExploreCats()">‹ 목록으로</button>
-    <div class="explore-sub-title">${cat.icon} ${cat.label} <span style="font-size:13px;font-weight:400;color:var(--gray-text)">(${cat.hospitals.length}개)</span></div>
+    <div class="explore-sub-title">${cat.icon} ${cat.label}${cat.designated ? `<span class="explore-cat-designated">${cat.designated}</span>` : ''} <span style="font-size:13px;font-weight:400;color:var(--gray-text)">(${cat.hospitals.length}개)</span></div>
     <div class="explore-hosp-list">
       ${cat.hospitals.map(hosp => `
         <a class="explore-hosp-item" href="${esc(hosp.url)}" target="_blank" rel="noopener">

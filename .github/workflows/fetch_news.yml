@@ -2,8 +2,8 @@ name: 뉴스 자동 수집
 
 on:
   schedule:
-    - cron: '0 23 * * *'  # 매일 08:00 KST (UTC 23:00 전날)
-    - cron: '0 4 * * *'   # 매일 13:00 KST (UTC 04:00)
+    - cron: '0 22 * * *'  # 매일 07:00 KST (UTC 22:00 전날)
+    - cron: '0 3 * * *'   # 매일 12:00 KST (UTC 03:00)
     - cron: '0 9 * * *'   # 매일 18:00 KST (UTC 09:00)
   workflow_dispatch:        # GitHub 웹에서 수동 실행 버튼
 

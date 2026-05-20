@@ -103,25 +103,26 @@
       background: linear-gradient(135deg, #92400E, #D97706);
       box-shadow: 0 2px 12px rgba(217,119,6,.5);
     }
-    /* 새로고침 버튼 */
-    .refresh-btn {
-      background: var(--blue);
+    /* 우리병원 뉴스 버튼 */
+    .hospital-btn {
+      background: linear-gradient(135deg, #047857, #059669);
       color: #fff;
       border: none;
       border-radius: 4px;
       padding: 7px 16px;
       font-size: 13px;
       font-family: inherit;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 5px;
-      transition: background .15s;
+      transition: opacity .15s, transform .1s;
       white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(4,120,87,.3);
     }
-    .refresh-btn:hover { background: var(--blue-hover); }
-    .refresh-btn.spinning svg { animation: spin .7s linear infinite; }
+    .hospital-btn:hover { opacity: .9; transform: translateY(-1px); }
+    .hospital-btn.active { background: linear-gradient(135deg, #064E3B, #047857); }
 
     /* ── Search Bar ──────────────────────────────────────────── */
     .searchbar {
@@ -592,6 +593,51 @@
     }
     .rec-rss-fail a:hover { background: var(--blue); color: #fff; }
 
+    /* ── 우리병원 뉴스 섹션 ─────────────────────────────────────── */
+    .hosp-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+    }
+    .hosp-header-title { font-size: 18px; font-weight: 700; color: var(--text); }
+    .hosp-header-date {
+      font-size: 12px; color: var(--gray-text);
+      background: var(--gray-bg); border: 1px solid var(--gray-border);
+      border-radius: 20px; padding: 3px 12px;
+    }
+    .hosp-note { font-size: 12px; color: var(--gray-text); margin-left: auto; }
+    .hosp-list {
+      background: #fff; border-radius: 10px;
+      box-shadow: var(--shadow); border: 1px solid var(--gray-border); overflow: hidden;
+    }
+    .hosp-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 20px; border-bottom: 1px solid var(--gray-border);
+      text-decoration: none; color: inherit; transition: background .1s;
+    }
+    .hosp-item:last-child { border-bottom: none; }
+    .hosp-item:hover { background: #F0FDF4; }
+    .hosp-num {
+      font-size: 12px; font-weight: 700; color: #059669;
+      min-width: 22px; text-align: center; margin-top: 2px; flex-shrink: 0;
+    }
+    .hosp-body { flex: 1; min-width: 0; }
+    .hosp-title { font-size: 14px; font-weight: 500; line-height: 1.5; margin-bottom: 4px; }
+    .hosp-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .hosp-outlet {
+      font-size: 11px; font-weight: 600; color: #059669;
+      background: #F0FDF4; border: 1px solid #A7F3D0;
+      padding: 1px 7px; border-radius: 3px;
+    }
+    .hosp-date { font-size: 11px; color: var(--gray-text); }
+    .hosp-arrow { color: #059669; font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+    .hosp-more-btn {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 13px 20px; font-size: 13px; font-weight: 600;
+      color: #fff; text-decoration: none;
+      background: linear-gradient(135deg, #047857, #059669);
+      transition: opacity .12s;
+    }
+    .hosp-more-btn:hover { opacity: .88; }
+
     /* ── 모바일 반응형 ──────────────────────────────────────────── */
     @media (max-width: 640px) {
 
@@ -601,7 +647,7 @@
       .logo-img { height: 24px; }
       .header-left { gap: 8px; }
       .header-right { gap: 6px; }
-      .recommend-btn, .refresh-btn { padding: 6px 10px; font-size: 12px; gap: 3px; }
+      .recommend-btn { padding: 6px 10px; font-size: 12px; gap: 3px; }
 
       /* 검색바 */
       .searchbar { padding: 8px 0; }
@@ -669,12 +715,8 @@
       <button class="recommend-btn" id="recommendBtn" onclick="toggleRecommendMode()">
         📋 최신 뉴스
       </button>
-      <button class="refresh-btn" id="refreshBtn" onclick="loadAllFeeds()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M23 4v6h-6"/><path d="M1 20v-6h6"/>
-          <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
-        </svg>
-        새로고침
+      <button class="hospital-btn" id="hospitalBtn" onclick="toggleHospitalMode()">
+        🏥 우리병원 뉴스
       </button>
     </div>
   </div>
@@ -760,7 +802,22 @@
     </div>
   </div>
 
-  <!-- ③ 검색 결과 모드 -->
+  <!-- ③ 우리병원 뉴스 모드 -->
+  <div id="hospitalMode" style="display:none">
+    <div class="hosp-header">
+      <span style="font-size:22px">🏥</span>
+      <span class="hosp-header-title">우리병원 뉴스</span>
+      <span class="hosp-header-date" id="hospDate"></span>
+      <span class="hosp-note">삼성창원병원 · 네이버뉴스 기준 최대 20건</span>
+    </div>
+    <div id="hospList"></div>
+    <div class="empty-wrap" id="emptyHosp">
+      <span class="empty-icon">📭</span>
+      <span class="empty-msg">우리병원 뉴스를 불러오지 못했습니다.</span>
+    </div>
+  </div>
+
+  <!-- ④ 검색 결과 모드 -->
   <div id="searchMode" style="display:none">
     <div id="searchSections"></div>
     <div class="empty-wrap" id="emptySearch">
@@ -791,11 +848,12 @@ const CATS = {
 };
 
 // ── State ────────────────────────────────────────────────────────────────
-let allArticles  = [];   // 전체 피드 데이터
-let recArticles  = {};   // { sourceName: [articles] } 추천 데이터
-let activeCat    = 'all';
-// 표시 모드: 'recommend' | 'feed' | 'search'
-let viewMode     = 'recommend';
+let allArticles    = [];   // 전체 피드 데이터
+let recArticles    = {};   // { sourceName: [articles] } 추천 데이터
+let hospitalArticles = []; // 우리병원 뉴스 데이터
+let activeCat      = 'all';
+// 표시 모드: 'recommend' | 'feed' | 'search' | 'hospital'
+let viewMode       = 'recommend';
 
 // ── Bootstrap ────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
@@ -803,6 +861,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('todayDate').textContent =
     now.toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'long' });
   document.getElementById('recDate').textContent =
+    now.toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric' }) + ' 기준';
+  document.getElementById('hospDate').textContent =
     now.toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric' }) + ' 기준';
 
   document.getElementById('searchInput').addEventListener('input', e => {
@@ -845,7 +905,8 @@ async function loadAllFeeds() {
       if (age > 24 * 60 * 60 * 1000) throw new Error('news.json 오래됨 (24h 초과)');
     }
 
-    allArticles = data.articles || [];
+    allArticles    = data.articles || [];
+    hospitalArticles = data.hospital_news || [];
 
     SOURCES.forEach(src => {
       const items = allArticles.filter(a => a._src === src.name);
@@ -900,19 +961,64 @@ function showView(mode) {
   viewMode = mode;
   document.getElementById('recommendMode').style.display = mode === 'recommend' ? 'block' : 'none';
   document.getElementById('feedMode').style.display      = mode === 'feed'      ? 'block' : 'none';
+  document.getElementById('hospitalMode').style.display  = mode === 'hospital'  ? 'block' : 'none';
   document.getElementById('searchMode').style.display    = mode === 'search'    ? 'block' : 'none';
 
   // 탭/필터 활성화 여부
-  const tabsDisabled = (mode === 'search');
+  const tabsDisabled = (mode === 'search' || mode === 'hospital');
   document.getElementById('tabsRow').style.opacity       = tabsDisabled ? '.4' : '';
   document.getElementById('tabsRow').style.pointerEvents = tabsDisabled ? 'none' : '';
-  document.getElementById('sourceFilter').style.display  = (mode === 'search') ? 'none' : '';
+  document.getElementById('sourceFilter').style.display  = tabsDisabled ? 'none' : '';
 
-  // 추천 버튼 active 상태
+  // 버튼 active 상태
   document.getElementById('recommendBtn').classList.toggle('active', mode === 'recommend');
+  document.getElementById('hospitalBtn').classList.toggle('active', mode === 'hospital');
 
   if (mode === 'recommend') renderRecommend();
   if (mode === 'feed')      renderFeed();
+  if (mode === 'hospital')  renderHospital();
+}
+
+// ── 우리병원 뉴스 ─────────────────────────────────────────────────────────
+function toggleHospitalMode() {
+  showView(viewMode === 'hospital' ? 'recommend' : 'hospital');
+}
+
+function renderHospital() {
+  const list  = document.getElementById('hospList');
+  const empty = document.getElementById('emptyHosp');
+
+  if (!hospitalArticles.length) {
+    list.innerHTML = '';
+    empty.classList.add('on');
+    document.getElementById('statusTxt').textContent = '우리병원 뉴스 데이터가 없습니다.';
+    return;
+  }
+
+  empty.classList.remove('on');
+  document.getElementById('statusTxt').innerHTML =
+    `삼성창원병원 관련 <strong>${hospitalArticles.length}건</strong> · 네이버뉴스 기준`;
+
+  const NAVER_URL = 'https://search.naver.com/search.naver?where=news&query=%EC%82%BC%EC%84%B1%EC%B0%BD%EC%9B%90%EB%B3%91%EC%9B%90&sort=1';
+
+  list.innerHTML = `
+    <div class="hosp-list">
+      ${hospitalArticles.map((item, idx) => `
+        <a class="hosp-item" href="${esc(item.link)}" target="_blank" rel="noopener">
+          <span class="hosp-num">${idx + 1}</span>
+          <div class="hosp-body">
+            <div class="hosp-title">${h(item.title)}</div>
+            <div class="hosp-meta">
+              ${item._outlet ? `<span class="hosp-outlet">${h(item._outlet)}</span>` : ''}
+              <span class="hosp-date">${fmtDate(item.pubDate)}</span>
+            </div>
+          </div>
+          <span class="hosp-arrow">›</span>
+        </a>`).join('')}
+      <a class="hosp-more-btn" href="${NAVER_URL}" target="_blank" rel="noopener">
+        네이버뉴스에서 더보기 ›
+      </a>
+    </div>`;
 }
 
 // ── Recommend Mode ────────────────────────────────────────────────────────

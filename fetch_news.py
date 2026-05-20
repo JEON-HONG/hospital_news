@@ -87,6 +87,33 @@ def find_source(item):
     return None
 
 
+OUTLET_MAP = {
+    "dailymedi.com": "데일리메디", "medicaltimes.com": "메디칼타임즈",
+    "docdocdoc.co.kr": "청년의사", "doctorsnews.co.kr": "의협신문",
+    "yna.co.kr": "연합뉴스", "medipana.com": "메디파나뉴스",
+    "chosun.com": "조선일보", "joins.com": "중앙일보", "joongang.co.kr": "중앙일보",
+    "hani.co.kr": "한겨레", "donga.com": "동아일보",
+    "khan.co.kr": "경향신문", "ohmynews.com": "오마이뉴스",
+    "ytn.co.kr": "YTN", "kbs.co.kr": "KBS", "mbc.co.kr": "MBC", "sbs.co.kr": "SBS",
+    "newsis.com": "뉴시스", "news1.kr": "뉴스1", "edaily.co.kr": "이데일리",
+    "mt.co.kr": "머니투데이", "heraldcorp.com": "헤럴드경제",
+}
+
+def extract_outlet(item):
+    """URL 도메인으로 언론사명 추출"""
+    url = item.get("originallink", "") or item.get("link", "")
+    try:
+        from urllib.parse import urlparse
+        netloc = urlparse(url).netloc.replace("www.", "")
+        for k, v in OUTLET_MAP.items():
+            if k in netloc:
+                return v
+        parts = netloc.split(".")
+        return parts[0] if parts else netloc
+    except Exception:
+        return ""
+
+
 def parse_date(date_str):
     """RSS 날짜 문자열 → datetime 변환"""
     for fmt in ["%a, %d %b %Y %H:%M:%S +0900", "%a, %d %b %Y %H:%M:%S +0000"]:
@@ -141,10 +168,25 @@ def main():
     # 날짜 내림차순 정렬
     articles.sort(key=lambda a: parse_date(a["pubDate"]), reverse=True)
 
+    # 우리병원 뉴스 수집 (삼성창원병원 — 모든 언론사)
+    print("  검색: 삼성창원병원 (우리병원 뉴스)")
+    hospital_items = search_naver("삼성창원병원", display=20)
+    hospital_news = []
+    for item in hospital_items:
+        link = item.get("originallink") or item.get("link", "")
+        hospital_news.append({
+            "title":       clean(item.get("title", "")),
+            "link":        link,
+            "description": clean(item.get("description", "")),
+            "pubDate":     item.get("pubDate", ""),
+            "_outlet":     extract_outlet(item),
+        })
+
     output = {
-        "updated":  datetime.now().strftime("%Y-%m-%d %H:%M"),
-        "count":    len(articles),
-        "articles": articles,
+        "updated":      datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "count":        len(articles),
+        "articles":     articles,
+        "hospital_news": hospital_news,
     }
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:

@@ -778,7 +778,7 @@
 </header>
 
 <!-- ── Search Bar ────────────────────────────────────────────────────── -->
-<div class="searchbar">
+<div class="searchbar" id="searchbar">
   <div class="searchbar-inner">
     <div class="search-wrap">
       <span class="search-icon">
@@ -1017,11 +1017,13 @@ function showView(mode) {
   document.getElementById('hospitalMode').style.display  = mode === 'hospital'  ? 'block' : 'none';
   document.getElementById('searchMode').style.display    = mode === 'search'    ? 'block' : 'none';
 
-  // 탭/필터 활성화 여부
-  const tabsDisabled = (mode === 'search' || mode === 'hospital');
-  document.getElementById('tabsRow').style.opacity       = tabsDisabled ? '.4' : '';
-  document.getElementById('tabsRow').style.pointerEvents = tabsDisabled ? 'none' : '';
-  document.getElementById('sourceFilter').style.display  = tabsDisabled ? 'none' : '';
+  // 검색바·탭 표시 여부 (우리병원 뉴스에서는 숨김)
+  const hospMode = (mode === 'hospital');
+  document.getElementById('searchbar').style.display     = hospMode ? 'none' : '';
+  document.getElementById('tabsRow').style.display       = hospMode ? 'none' : '';
+  document.getElementById('tabsRow').style.opacity       = mode === 'search' ? '.4' : '';
+  document.getElementById('tabsRow').style.pointerEvents = mode === 'search' ? 'none' : '';
+  document.getElementById('sourceFilter').style.display  = (mode === 'search' || hospMode) ? 'none' : '';
 
   // 버튼 active 상태
   document.getElementById('recommendBtn').classList.toggle('active', mode === 'recommend');

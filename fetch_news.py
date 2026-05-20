@@ -170,7 +170,7 @@ def main():
 
     # 우리병원 뉴스 수집 (삼성창원병원 — 모든 언론사)
     print("  검색: 삼성창원병원 (우리병원 뉴스)")
-    hospital_items = search_naver("삼성창원병원", display=20)
+    hospital_items = search_naver("삼성창원병원", display=50)
     hospital_news = []
     for item in hospital_items:
         title = clean(item.get("title", ""))

@@ -1047,7 +1047,7 @@ function renderHospital() {
   const filtered = hospitalArticles.filter(item =>
     (item.title       && item.title.includes('삼성창원병원')) ||
     (item.description && item.description.includes('삼성창원병원'))
-  );
+  ).slice(0, 20);
 
   if (!filtered.length) {
     list.innerHTML = '';

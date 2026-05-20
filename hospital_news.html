@@ -123,6 +123,25 @@
     }
     .hospital-btn:hover { opacity: .9; transform: translateY(-1px); }
     .hospital-btn.active { background: linear-gradient(135deg, #064E3B, #047857); }
+    /* 다른 병원 둘러보기 버튼 */
+    .explore-btn {
+      background: linear-gradient(135deg, #4338CA, #6366F1);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 7px 16px;
+      font-size: 13px;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: opacity .15s, transform .1s;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(67,56,202,.3);
+    }
+    .explore-btn:hover { opacity: .9; transform: translateY(-1px); }
 
     /* ── Search Bar ──────────────────────────────────────────── */
     .searchbar {
@@ -641,13 +660,37 @@
     /* ── 모바일 반응형 ──────────────────────────────────────────── */
     @media (max-width: 640px) {
 
-      /* 헤더 — 검색버튼과 동일한 좌우 패딩(12px) */
-      .header-inner { height: 52px; padding: 0 12px; }
-      .hdivider, .portal-title, .date-chip { display: none; }
+      /* 헤더 — 2행 구조 (로고+제목 / 버튼3개) */
+      .header-inner {
+        height: auto;
+        padding: 10px 12px 0;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .header-left { gap: 8px; padding-bottom: 8px; }
       .logo-img { height: 24px; }
-      .header-left { gap: 8px; }
-      .header-right { gap: 6px; }
-      .recommend-btn { padding: 6px 10px; font-size: 12px; gap: 3px; }
+      .hdivider { display: none; }
+      .portal-title { display: block; font-size: 13px; }
+      .date-chip { display: none; }
+      /* 버튼 3개를 두 번째 행에 가득 채움 */
+      .header-right {
+        flex-basis: 100%;
+        border-top: 1px solid var(--gray-border);
+        gap: 0;
+        padding: 0;
+      }
+      .recommend-btn, .hospital-btn, .explore-btn {
+        flex: 1;
+        justify-content: center;
+        border-radius: 0;
+        padding: 9px 4px;
+        font-size: 11px;
+        gap: 3px;
+        box-shadow: none;
+        transform: none !important;
+      }
+      .recommend-btn { border-right: 1px solid rgba(255,255,255,.25); }
+      .hospital-btn  { border-right: 1px solid rgba(255,255,255,.25); }
 
       /* 검색바 */
       .searchbar { padding: 8px 0; }
@@ -717,6 +760,9 @@
       </button>
       <button class="hospital-btn" id="hospitalBtn" onclick="toggleHospitalMode()">
         🏥 우리병원 뉴스
+      </button>
+      <button class="explore-btn" id="exploreBtn">
+        🏘 다른 병원 둘러보기
       </button>
     </div>
   </div>

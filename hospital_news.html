@@ -1071,6 +1071,7 @@ async function loadAllFeeds() {
 
 // ── View Switcher ─────────────────────────────────────────────────────────
 function showView(mode) {
+  window.scrollTo({ top: 0, behavior: 'instant' });
   viewMode = mode;
   document.getElementById('recommendMode').style.display = mode === 'recommend' ? 'block' : 'none';
   document.getElementById('feedMode').style.display      = mode === 'feed'      ? 'block' : 'none';

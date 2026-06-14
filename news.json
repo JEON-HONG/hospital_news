@@ -1,7 +1,21 @@
 {
-  "updated": "2026-06-14 10:33",
-  "count": 123,
+  "updated": "2026-06-14 11:37",
+  "count": 125,
   "articles": [
+    {
+      "title": "수가협상 외쳐봐야 매번 공허한 메아리",
+      "link": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=164922",
+      "description": "의약분업 사태 이후 정치 참여를 선언한 의협은 불합리한 의료수가를 바로잡기 위해 끊임없이 투쟁해 왔다.... 회복하고 의료 안전성을 확보하는 데 있다. 이재만 대한의사협회 정책이사 ⓒ의협신문 의사면허관리원의 설립...",
+      "pubDate": "Sun, 14 Jun 2026 20:10:00 +0900",
+      "_src": "의협신문"
+    },
+    {
+      "title": "전공의·교수·봉직의 \"이제는 의사노조 시대…연대하자\"",
+      "link": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=164957",
+      "description": "2018년 의사노조를 처음 현실화 시킨 김재현 동남권원자력병원 의사노조(민주노총 공공운수노조의료연대... 건강보험정책심의위원회, 수가협상 등에 들어가 공급자 의견을 대변해야 한다\"고 주장했다. 전국 단위 유일한...",
+      "pubDate": "Sun, 14 Jun 2026 20:10:00 +0900",
+      "_src": "의협신문"
+    },
     {
       "title": "부산 센텀종합병원, AI 기반 '씽크(thynC)' 도입",
       "link": "https://www.dailymedi.com/news/news_view.php?wr_id=937317",

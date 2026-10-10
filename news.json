@@ -1,7 +1,14 @@
 {
-  "updated": "2026-10-09 15:55",
-  "count": 115,
+  "updated": "2026-10-10 01:32",
+  "count": 112,
   "articles": [
+    {
+      "title": "사무장병원·면허대여 약국 부당이득 6천550억…환수율 14% 그쳐",
+      "link": "https://www.yna.co.kr/view/AKR20261008002100530?input=1195m",
+      "description": "사무장병원이나 면허 대여 약국 등 불법개설기관의 부당이득에 대한 환수율이 14% 남짓에 그친 것으로 나타났다. 10일 국회예산정책처가 국민건강보험공단에서 받은 자료에 따르면 2021년∼올해 6월 환수가 결정된...",
+      "pubDate": "Sat, 10 Oct 2026 06:01:00 +0900",
+      "_src": "연합뉴스"
+    },
     {
       "title": "환자안전사고 181건 중 사망 48건… 투약 오류가 다수",
       "link": "https://www.medicaltimes.com/Main/News/NewsView.html?ID=1171108&ref=naverpc",
@@ -110,15 +117,8 @@
     {
       "title": "위고비·마운자로 의원급 쏠림…상위 10곳 최대 14.5%",
       "link": "https://www.medicaltimes.com/Main/News/NewsView.html?ID=1171104&ref=naverpc",
-      "description": "8일 민주당 남인순 의원(보건복지위원회·서울 송파병)은 건강보험심사평가원에서 받은 자료를 이같이... 4%였으며, 상급종합병원 비중은 각각 2.0%, 0.5%였다. 의원급 공급 물량도 일부 기관에 몰렸다. 위고비를...",
+      "description": "4%였으며, 상급종합병원 비중은 각각 2.0%, 0.5%였다. 의원급 공급 물량도 일부 기관에 몰렸다. 위고비를 공급받은 의원 1만6047곳 중 상위 10곳이 의원급 전체 유통량의 10.2%를 차지했다. 마운자로는 공급받은 의원...",
       "pubDate": "Thu, 08 Oct 2026 19:00:00 +0900",
-      "_src": "메디칼타임즈"
-    },
-    {
-      "title": "'파드셉·빌로이' 동시 진입…항암제 급여 새 역사 썼다",
-      "link": "https://www.medicaltimes.com/Main/News/NewsView.html?ID=1171101&ref=naverpc",
-      "description": "1일부터 건강보험 급여가 적용된 파드셉(엔포투맙 베도틴)과 빌로이(졸베툭시맙)의 임상적 가치와 의의를 조명했다. 서울성모병원 종양내과 김인호 교수요로상피암 1차 표준치료로 자리 잡은 '파드셉'첫 번째...",
-      "pubDate": "Thu, 08 Oct 2026 18:16:00 +0900",
       "_src": "메디칼타임즈"
     },
     {
@@ -311,13 +311,6 @@
       "_src": "청년의사"
     },
     {
-      "title": "배우던 한국 병원, 이젠 세계가 배우러 온다…달라진 19년",
-      "link": "https://www.medipana.com/news/articleView.html?idxno=418919",
-      "description": "고령화에 따른 의료비 증가와 제한된 재원, 의사·간호사 등 의료인력 부족은 국가와 의료체계를 가리지 않고 나타나는 공통 과제가 됐다. 병원계는 이를 풀어갈 새로운 수단으로 인공지능(AI) 기반 디지털 전환에...",
-      "pubDate": "Thu, 08 Oct 2026 06:06:00 +0900",
-      "_src": "메디파나뉴스"
-    },
-    {
       "title": "\"형사처벌-필수의료 기피 관계 있나?\"…정은경 \"사례 이미 누적\"",
       "link": "http://www.doctorsnews.co.kr/news/articleView.html?idxno=166665",
       "description": "전공의 설문조사 결과는 의료분쟁에 대한 법적 부담이 실제 진료 행태와 전공·진로 선택에 영향을 미치는 현실을 보여주는 당사자 조사라는 점에서 주목된다. 대한의사협회 의료정책연구원도 의료사고 형사책임을...",
@@ -351,20 +344,6 @@
       "description": "전공의 수련혁신과 수련병원 제도 개선 논의에도 참여해 지역에서 의료인력을 확보할 수 있는 기반을 마련한다는 구상이다. 내부 관리체계도 정비하고 있다. 의사직업윤리위원회는 위원장과 위원 구성을 마치고 운영에...",
       "pubDate": "Wed, 07 Oct 2026 18:06:00 +0900",
       "_src": "메디파나뉴스"
-    },
-    {
-      "title": "\"항암주사 등 근거 부족 비급여 퇴출해야\"…정부도 제도 보완 공감",
-      "link": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3043416",
-      "description": "개혁 정책이 필요하다\"​며 \"비급여 가격을 관리하면서 건강보험 수가를 원가 100% 수준으로 올려야 하고 의학적으로 근거가 없는 비급여는 퇴출시켜야 한다\"고 강조했다. 복지부도 보의연 의료기술재평가 결과를...",
-      "pubDate": "Wed, 07 Oct 2026 17:18:00 +0900",
-      "_src": "청년의사"
-    },
-    {
-      "title": "\"근거 불충분 진료 다수\" 비급여 남용 국감 도마 위",
-      "link": "https://www.medicaltimes.com/Main/News/NewsView.html?ID=1171066&ref=naverpc",
-      "description": "김윤 의원은 \"보다 근본적이고 포괄적인 비급여 개혁 정책이 없인 지역·필수의료 위기 문제를 해결할 수 없다\"며 \"비급여 가격을 관리하는 동시에 건강보험 수가를 원가 100% 수준으로 올려야 일부 기관의 초과이윤과 인력...",
-      "pubDate": "Wed, 07 Oct 2026 17:16:00 +0900",
-      "_src": "메디칼타임즈"
     },
     {
       "title": "\"신규 간호사 늘고 숙련자는 PA로\"…서울대병원 노조, 파업 예고",
@@ -810,11 +789,11 @@
   ],
   "hospital_news": [
     {
-      "title": "[부고] 허민회(CJ 경영지원대표)씨 모친상",
-      "link": "http://www.seouleconews.com/news/articleView.html?idxno=94241",
-      "description": "(CJ 경영지원대표)씨 모친상, 정혜린·최혜정 씨 시모상, 허건우(촬영감독)·허자윤(EY한영)·허재성(PWC컨설팅)씨 조모상 = 8일 오후 2시, 삼성창원병원 VIP실 1호, 발인 11일 오전 9시, 장지 산청호국원. ☎ 055-233-8442",
-      "pubDate": "Fri, 09 Oct 2026 21:02:00 +0900",
-      "_outlet": "seouleconews"
+      "title": "[부고] 허민회 씨(CJ 경영지원대표) 모친상",
+      "link": "http://www.metroseoul.co.kr/article/20261010500001",
+      "description": "▲구순자 씨(93) 별세, 허원회 씨(전 거제시청 공무원)·허민회 씨(CJ 경영지원대표) 모친상, 정혜린·최혜정 씨 시모상, 허건우 씨(촬영감독)·허자윤 씨(EY한영)·허재성 씨(PwC컨설팅) 조모상=8일, 삼성창원병원...",
+      "pubDate": "Sat, 10 Oct 2026 09:52:00 +0900",
+      "_outlet": "metroseoul"
     },
     {
       "title": "[부고] 허민회(CJ 경영지원대표)씨 모친상",
@@ -822,6 +801,13 @@
       "description": "(CJ 경영지원대표)씨 모친상, 정혜린·최혜정 씨 시모상, 허건우(촬영감독)·허자윤(EY한영)·허재성(PWC컨설팅)씨 조모상 = 8일 오후 2시, 삼성창원병원 VIP실 1호, 발인 11일 오전 9시, 장지 산청호국원. ☎ 055-233-8442",
       "pubDate": "Fri, 09 Oct 2026 21:02:00 +0900",
       "_outlet": "newsfc"
+    },
+    {
+      "title": "[부고] 허민회(CJ 경영지원대표)씨 모친상",
+      "link": "http://www.seouleconews.com/news/articleView.html?idxno=94241",
+      "description": "(CJ 경영지원대표)씨 모친상, 정혜린·최혜정 씨 시모상, 허건우(촬영감독)·허자윤(EY한영)·허재성(PWC컨설팅)씨 조모상 = 8일 오후 2시, 삼성창원병원 VIP실 1호, 발인 11일 오전 9시, 장지 산청호국원. ☎ 055-233-8442",
+      "pubDate": "Fri, 09 Oct 2026 21:02:00 +0900",
+      "_outlet": "seouleconews"
     },
     {
       "title": "[부고] 허민회(CJ 경영지원대표)씨 모친상",
@@ -895,17 +881,17 @@
     },
     {
       "title": "[부고] 허민회(CJ 경영지원대표)씨 모친상",
-      "link": "https://www.megaeconomy.co.kr/news/newsview.php?ncode=1065616001684084",
-      "description": "(CJ 경영지원대표)씨 모친상, 정혜린·최혜정 씨 시모상, 허건우(촬영감독)·허자윤(EY한영)·허재성(PWC컨설팅)씨 조모상 = 8일 오후 2시, 삼성창원병원 VIP실 1호, 발인 11일 오전 9시, 장지 산청호국원. 055-233-8442",
-      "pubDate": "Thu, 08 Oct 2026 21:28:00 +0900",
-      "_outlet": "megaeconomy"
-    },
-    {
-      "title": "[부고] 허민회(CJ 경영지원대표)씨 모친상",
       "link": "https://www.goodkyung.com/news/articleView.html?idxno=292197",
       "description": "▲구순자(향년 93세)씨 별세, 허원회(전 거제시청 공무원)·허민회(CJ 경영지원대표)씨 모친상, 정혜린·최혜정씨 시모상, 허건우(촬영감독)·허자윤(EY한영)·허재성(PWC컨설팅)씨 조모상 = 8일, 삼성창원병원...",
       "pubDate": "Thu, 08 Oct 2026 21:28:00 +0900",
       "_outlet": "goodkyung"
+    },
+    {
+      "title": "[부고] 허민회(CJ 경영지원대표)씨 모친상",
+      "link": "https://www.megaeconomy.co.kr/news/newsview.php?ncode=1065616001684084",
+      "description": "(CJ 경영지원대표)씨 모친상, 정혜린·최혜정 씨 시모상, 허건우(촬영감독)·허자윤(EY한영)·허재성(PWC컨설팅)씨 조모상 = 8일 오후 2시, 삼성창원병원 VIP실 1호, 발인 11일 오전 9시, 장지 산청호국원. 055-233-8442",
+      "pubDate": "Thu, 08 Oct 2026 21:28:00 +0900",
+      "_outlet": "megaeconomy"
     },
     {
       "title": "[부고] 곽민영씨 별세 外",
@@ -985,18 +971,18 @@
       "_outlet": "조선일보"
     },
     {
-      "title": "간병비 부담 줄인다더니, 국립대병원부터 '반토막'",
-      "link": "https://www.labortoday.co.kr/news/articleView.html?idxno=237139",
-      "description": "반면 사립대병원인 인하대병원은 72.9%, 삼성창원병원은 65.8%, 가천대 길병원은 60.6%를 기록했다. 지역별 격차도 컸다. 지역거점공공병원 41곳의 평균 비율은 45.4%였지만 수도권은 69.7%, 비수도권은 36.6%로 두 배 가까이...",
-      "pubDate": "Thu, 08 Oct 2026 17:42:00 +0900",
-      "_outlet": "labortoday"
-    },
-    {
       "title": "[부음] 안재홍 부인, 정재영 부친, 허민회 모친",
       "link": "https://www.businesspost.co.kr/BP?command=article_view&num=448959",
       "description": "△구순자 씨 별세, 허원회(전 거제시청 공무원)·허민회(CJ 경영지원대표) 모친상, 정혜린·최혜정 시모상, 허건우(촬영감독)·허자윤(EY한영)·허재성(PWC컨설팅) 조모상 = 8일, 빈소 경남 창원시 삼성창원병원...",
       "pubDate": "Thu, 08 Oct 2026 17:42:00 +0900",
       "_outlet": "businesspost"
+    },
+    {
+      "title": "간병비 부담 줄인다더니, 국립대병원부터 '반토막'",
+      "link": "https://www.labortoday.co.kr/news/articleView.html?idxno=237139",
+      "description": "반면 사립대병원인 인하대병원은 72.9%, 삼성창원병원은 65.8%, 가천대 길병원은 60.6%를 기록했다. 지역별 격차도 컸다. 지역거점공공병원 41곳의 평균 비율은 45.4%였지만 수도권은 69.7%, 비수도권은 36.6%로 두 배 가까이...",
+      "pubDate": "Thu, 08 Oct 2026 17:42:00 +0900",
+      "_outlet": "labortoday"
     },
     {
       "title": "[부고] 허민회(CJ 경영지원대표)씨 모친상",
@@ -1062,13 +1048,6 @@
       "_outlet": "newstomato"
     },
     {
-      "title": "[부음] 구순자씨 별세 외",
-      "link": "https://www.mk.co.kr/article/12171746",
-      "description": "▲구순자씨 별세, 허원회(전 거제시청 공무원) 허민회씨(CJ 경영지원대표) 모친상, 정혜린 최혜정씨 시모상, 허건우(촬영감독) 허자윤(EY한영) 허재성씨(PWC컨설팅) 조모상=8일 삼성창원병원, 발인 11일 오전...",
-      "pubDate": "Thu, 08 Oct 2026 17:08:00 +0900",
-      "_outlet": "mk"
-    },
-    {
       "title": "[부고] 허민회(CJ 경영지원대표)씨 모친상",
       "link": "https://www.fntimes.com/html/view.php?ud=20261008170408612923defd0cc_18",
       "description": "정혜린·최혜정 씨 시모상, 허건우(촬영감독)·허자윤(EY한영)·허재성(PWC컨설팅)씨 조모상 = 8일 오후 2시, 삼성창원병원 VIP실 1호, 발인 11일 오전 9시, 장지 산청호국원. ☎ 055-233-8442 양현우 한국금융신문 기자",
@@ -1076,11 +1055,11 @@
       "_outlet": "fntimes"
     },
     {
-      "title": "[부고] 허민회(CJ 경영지원대표)씨 모친상",
-      "link": "https://www.m-i.kr/news/articleView.html?idxno=2004157",
-      "description": "허민회(CJ 경영지원대표)씨 모친상, 정혜린·최혜정씨 시모상, 허건우(촬영감독)·허자윤(EY한영)·허재성(PWC컨설팅)씨 조모상 = 8일, 삼성창원병원 VIP실 1호, 발인 11일 오전 9시, 장지 산청호국원, 055-233-8442",
-      "pubDate": "Thu, 08 Oct 2026 17:04:00 +0900",
-      "_outlet": "m-i"
+      "title": "[부음] 구순자씨 별세 외",
+      "link": "https://www.mk.co.kr/article/12171746",
+      "description": "▲구순자씨 별세, 허원회(전 거제시청 공무원) 허민회씨(CJ 경영지원대표) 모친상, 정혜린 최혜정씨 시모상, 허건우(촬영감독) 허자윤(EY한영) 허재성씨(PWC컨설팅) 조모상=8일 삼성창원병원, 발인 11일 오전...",
+      "pubDate": "Thu, 08 Oct 2026 17:08:00 +0900",
+      "_outlet": "mk"
     },
     {
       "title": "[부고]허민회(CJ 경영지원대표)씨 모친상",
@@ -1098,6 +1077,13 @@
     },
     {
       "title": "[부고] 허민회(CJ 경영지원대표)씨 모친상",
+      "link": "https://www.m-i.kr/news/articleView.html?idxno=2004157",
+      "description": "허민회(CJ 경영지원대표)씨 모친상, 정혜린·최혜정씨 시모상, 허건우(촬영감독)·허자윤(EY한영)·허재성(PWC컨설팅)씨 조모상 = 8일, 삼성창원병원 VIP실 1호, 발인 11일 오전 9시, 장지 산청호국원, 055-233-8442",
+      "pubDate": "Thu, 08 Oct 2026 17:04:00 +0900",
+      "_outlet": "m-i"
+    },
+    {
+      "title": "[부고] 허민회(CJ 경영지원대표)씨 모친상",
       "link": "https://www.nocutnews.co.kr/news/6589128?utm_source=naver&utm_medium=article&utm_campaign=20261008044236",
       "description": "(CJ 경영지원대표)씨 모친상, 정혜린·최혜정 씨 시모상, 허건우(촬영감독)·허자윤(EY한영)·허재성(PWC컨설팅)씨 조모상 = 8일 오후 2시, 삼성창원병원 VIP실 1호, 발인 11일 오전 9시, 장지 산청호국원. ☏ 055-233-8442",
       "pubDate": "Thu, 08 Oct 2026 16:43:00 +0900",
@@ -1109,13 +1095,6 @@
       "description": "오후2시 삼성창원병원 발인 11일 오전9시 (055)233-8442 ▲신효선씨 별세·승창(도이치모터스) 덕인(국민연금공단) 혜인(한전원자력연료)씨 부친상·이인호(현대자동차그룹 커뮤니케이션센터 책임매니저)...",
       "pubDate": "Thu, 08 Oct 2026 16:42:00 +0900",
       "_outlet": "hankookilbo"
-    },
-    {
-      "title": "[부고]허민회(CJ 경영지원대표)씨 모친상",
-      "link": "https://www.newsis.com/view/NISX20261008_0003819605",
-      "description": "▲구순자(향년 93세)씨 별세, 허원회(전 거제시청)씨, 허민회(CJ 경영지원대표)씨 모친상, 정혜린·최혜정씨 시모상, 허건우(촬영감독)·허자윤(EY한영)·허재성(PWC컨설팅)씨 조모상 = 8일, 삼성창원병원 VIP실...",
-      "pubDate": "Thu, 08 Oct 2026 16:40:00 +0900",
-      "_outlet": "뉴시스"
     },
     {
       "title": "[부고] 허민회(CJ 경영지원 대표)씨 모친상",
@@ -1132,18 +1111,11 @@
       "_outlet": "betanews"
     },
     {
-      "title": "[부고] 허민회(CJ 경영지원대표)씨 모친상",
-      "link": "https://www.seoulfn.com/news/articleView.html?idxno=639697",
-      "description": "(CJ 경영지원대표)씨 모친상, 정혜린·최혜정 씨 시모상, 허건우(촬영감독)·허자윤(EY한영)·허재성(PWC컨설팅)씨 조모상 = 8일 오후 2시, 삼성창원병원 VIP실 1호, 발인 11일 오전 9시, 장지 산청호국원. ☎ 055-233-8442",
-      "pubDate": "Thu, 08 Oct 2026 16:39:00 +0900",
-      "_outlet": "seoulfn"
-    },
-    {
       "title": "[부고]허민회(CJ 경영지원대표)씨 모친상",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=04772406645610952&mediaCodeNo=257&utm_source=naver&utm_medium=referral&utm_campaign=news_syndication&utm_content=original_article",
-      "description": "△구순자(향년 93세)씨 별세, 허원회(전 거제시청 공무원)·허민회(CJ 경영지원대표)씨 모친상, 정혜린·최혜정 씨 시모상, 허건우(촬영감독)·허자윤(EY한영)·허재성(PWC컨설팅)씨 조모상 = 8일, 삼성창원병원...",
-      "pubDate": "Thu, 08 Oct 2026 16:36:00 +0900",
-      "_outlet": "이데일리"
+      "link": "https://www.newsis.com/view/NISX20261008_0003819605",
+      "description": "▲구순자(향년 93세)씨 별세, 허원회(전 거제시청)씨, 허민회(CJ 경영지원대표)씨 모친상, 정혜린·최혜정씨 시모상, 허건우(촬영감독)·허자윤(EY한영)·허재성(PWC컨설팅)씨 조모상 = 8일, 삼성창원병원 VIP실...",
+      "pubDate": "Thu, 08 Oct 2026 16:40:00 +0900",
+      "_outlet": "뉴시스"
     }
   ]
 }
